@@ -1,6 +1,48 @@
 # DirTree
 
-TODO: Write a gem description
+DirTree converts directory tree structure into a hash.
+
+```text
+root
+├── dir_1
+│   ├── file_in_dir_1_1
+│   └── file_in_dir_1_2
+├── dir_2
+│   ├── dir_3
+│   │   ├── file_in_dir_3_1
+│   │   └── file_in_dir_3_2
+│   ├── file_in_dir_2_1
+│   └── file_in_dir_2_2
+├── file_in_root_1
+└── file_in_root_2
+```
+
+```ruby
+DirTree::hash_tree("/root")
+```
+
+```ruby
+{
+    "/root" => {
+                 "dir_1" => {
+            "file_in_dir_1_1" => nil,
+            "file_in_dir_1_2" => nil
+        },
+                 "dir_2" => {
+                      "dir_3" => {
+                "file_in_dir_3_1" => nil,
+                "file_in_dir_3_2" => nil
+            },
+            "file_in_dir_2_1" => nil,
+            "file_in_dir_2_2" => nil
+        },
+        "file_in_root_1" => nil,
+        "file_in_root_2" => nil
+    }
+}
+```
+
+Each entry is represented as a key of hash. Its value is hash for children if it is a directory, its value is `nil` if it is a file instead. 
 
 ## Installation
 

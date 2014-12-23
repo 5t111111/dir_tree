@@ -23,10 +23,9 @@ module DirTree
       if File.directory?(full_path)
         children.update(hash_tree(full_path, entry))
       else
-        children[entry] = {}
+        children[entry] = nil
       end
     end
     data
   end
 end
-

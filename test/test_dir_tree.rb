@@ -25,16 +25,16 @@ class TestDirTree < MiniTest::Unit::TestCase
     # │   └── file_in_root_2
     expected = { File.join(@test_path, 'root') =>
                       { "dir_1" =>
-                        { "file_in_dir_1_1" => {},
-                          "file_in_dir_1_2" => {}},
+                        { "file_in_dir_1_1" => nil,
+                          "file_in_dir_1_2" => nil},
                         "dir_2" =>
                           { "dir_3" =>
-                            { "file_in_dir_3_1" => {},
-                              "file_in_dir_3_2" => {}},
-                            "file_in_dir_2_1" => {},
-                            "file_in_dir_2_2" => {}},
-                        "file_in_root_1" => {},
-                        "file_in_root_2" => {}}}
+                            { "file_in_dir_3_1" => nil,
+                              "file_in_dir_3_2" => nil},
+                            "file_in_dir_2_1" => nil,
+                            "file_in_dir_2_2" => nil},
+                        "file_in_root_1" => nil,
+                        "file_in_root_2" => nil}}
     actual = DirTree.hash_tree(File.join(@test_path, 'root'))
     assert_equal expected, actual
   end
